@@ -22,13 +22,13 @@ class Responsive extends StatelessWidget {
 
   // This isMobile, isTablet, isDesktop helep us later
   static bool isMobile(BuildContext context) =>
-      WidgetsBinding.instance.window.physicalSize.width < 400;
+      WidgetsBinding.instance.window.physicalSize.width < 850;
   static bool isTablet(BuildContext context) =>
       WidgetsBinding.instance.window.physicalSize.width < 2200 &&
       WidgetsBinding.instance.window.physicalSize.width >= 1700;
 
   static bool isDesktop(BuildContext context) =>
-      WidgetsBinding.instance.window.physicalSize.width >= 850;
+      WidgetsBinding.instance.window.physicalSize.width >= 1100;
 
   @override
   Widget build(BuildContext context) {

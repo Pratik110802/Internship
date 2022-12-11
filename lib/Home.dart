@@ -37,6 +37,8 @@ class Home extends StatelessWidget {
                   height: 800.h,
                   width: 360.w,
                   child: ListView(
+                    physics: BouncingScrollPhysics(
+                        parent: AlwaysScrollableScrollPhysics()),
                     children: [
                       SizedBox(
                         height: 21.sp,

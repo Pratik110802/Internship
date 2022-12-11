@@ -1,5 +1,8 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 class Mobiletopbar extends StatelessWidget {
   const Mobiletopbar({super.key});
@@ -13,30 +16,56 @@ class Mobiletopbar extends StatelessWidget {
         width: 360.w * 0.94,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10), color: Colors.black),
-        child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: const [
-              Icon(
-                Icons.home,
-                color: Colors.white,
-              ),
-              Icon(
-                Icons.school_outlined,
-                color: Colors.white,
-              ),
-              Icon(
-                Icons.person_outlined,
-                color: Colors.white,
-              ),
-              Icon(
-                Icons.email_outlined,
-                color: Colors.white,
-              ),
-              Icon(
-                Icons.settings,
-                color: Colors.white,
-              )
-            ]),
+        child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+          IconButton(
+            icon: const Icon(
+              Icons.home,
+              color: Colors.white,
+            ),
+            onPressed: () {
+              print('home pressed');
+              context.go('/');
+            },
+          ),
+          IconButton(
+            icon: const Icon(
+              Icons.school_outlined,
+              color: Colors.white,
+            ),
+            onPressed: () {
+              print('courses');
+              context.go('/courses');
+            },
+          ),
+          IconButton(
+            icon: const Icon(
+              Icons.person_outline,
+              color: Colors.white,
+            ),
+            onPressed: () {
+              print('myaccount');
+              context.go('/myaccount');
+            },
+          ),
+          IconButton(
+            icon: const Icon(
+              Icons.email,
+              color: Colors.white,
+            ),
+            onPressed: () {
+              context.go('/message');
+            },
+          ),
+          GestureDetector(
+            child: const Icon(
+              Icons.settings,
+              color: Colors.white,
+            ),
+            onTap: () {
+              context.go('/settings');
+            },
+          ),
+        ]),
       ),
     );
   }

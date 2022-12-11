@@ -1,10 +1,11 @@
 // ignore_for_file: avoid_print
 
 import 'package:adaptive_theme/adaptive_theme.dart';
-import 'package:internship/screens/Extras%20screens/auth.dart';
+import 'package:internship/screens/Extras%20screens/courses.dart';
 import 'package:internship/screens/Extras%20screens/dashboard_account.dart';
 import 'package:internship/Home.dart';
-import 'package:internship/screens/Extras%20screens/onboarding.dart';
+import 'package:internship/screens/Extras%20screens/message.dart';
+import 'package:internship/screens/Extras%20screens/settings.dart';
 import 'responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -45,30 +46,36 @@ class _LayerState extends State<Layer> {
   }
 
   final GoRouter _router = GoRouter(
-    errorBuilder: (context, state) => const Scaffold(
-      body: Center(child: Text('Not found')),
-    ),
-    routes: <GoRoute>[
+    routes: <RouteBase>[
       GoRoute(
-        routes: <GoRoute>[
-          GoRoute(
-            path: 'welcome',
-            builder: (BuildContext context, GoRouterState state) =>
-                const Onboarding(),
-          ),
-          GoRoute(
-            path: 'auth',
-            builder: (BuildContext context, GoRouterState state) =>
-                const Authentication(),
-          ),
-          GoRoute(
-            path: 'dashboard',
-            builder: (BuildContext context, GoRouterState state) =>
-                const MyAccount(),
-          ),
-        ],
         path: '/',
-        builder: (BuildContext context, GoRouterState state) => const Home(),
+        builder: (BuildContext context, GoRouterState state) {
+          return const Home();
+        },
+      ),
+      GoRoute(
+        path: '/courses',
+        builder: (BuildContext context, GoRouterState state) {
+          return const Courses();
+        },
+      ),
+      GoRoute(
+        path: '/myaccount',
+        builder: (BuildContext context, GoRouterState state) {
+          return const MyAccount();
+        },
+      ),
+      GoRoute(
+        path: '/message',
+        builder: (BuildContext context, GoRouterState state) {
+          return const Message();
+        },
+      ),
+      GoRoute(
+        path: '/settings',
+        builder: (BuildContext context, GoRouterState state) {
+          return const Settings();
+        },
       ),
     ],
   );
@@ -110,12 +117,10 @@ class _LayerState extends State<Layer> {
           builder: (theme, darkTheme) => MaterialApp.router(
             debugShowMaterialGrid: false,
             debugShowCheckedModeBanner: false,
-            title: '/',
+            title: 'Internship',
             theme: theme,
             useInheritedMediaQuery: true,
-            routerDelegate: _router.routerDelegate,
-            routeInformationParser: _router.routeInformationParser,
-            routeInformationProvider: _router.routeInformationProvider,
+            routerConfig: _router,
           ),
         ),
       ),

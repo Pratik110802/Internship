@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
+import 'package:internship/screens/Extras%20screens/courses.dart';
 
 //Deskop Navigation Bar
 class DesktopTabbar extends StatelessWidget {
@@ -32,40 +34,70 @@ class DesktopTabbar extends StatelessWidget {
             SizedBox(
               height: 900.h * 0.071,
             ),
-            const Icon(
-              Icons.home,
-              color: Colors.white,
+            IconButton(
+              iconSize: 18.sp,
+              icon: const Icon(
+                Icons.home,
+                color: Colors.white,
+              ),
+              onPressed: () {
+                context.goNamed('/');
+              },
             ),
             SizedBox(
               height: 900.h * 0.07,
             ),
-            const Icon(
-              Icons.school_outlined,
-              color: Colors.white,
+            IconButton(
+              iconSize: 18.sp,
+              icon: const Icon(
+                Icons.school_outlined,
+                color: Colors.white,
+              ),
+              onPressed: () {
+                context.go('/courses');
+              },
             ),
             SizedBox(
               height: 900.h * 0.06,
             ),
-            const Icon(
-              Icons.person_outlined,
-              color: Colors.white,
+            IconButton(
+              iconSize: 18.sp,
+              icon: const Icon(
+                Icons.person_outline,
+                color: Colors.white,
+              ),
+              onPressed: () {
+                context.goNamed('/myaccount');
+              },
             ),
             SizedBox(
               height: 900.h * 0.06,
             ),
-            const Icon(
-              Icons.email_outlined,
-              color: Colors.white,
+            IconButton(
+              iconSize: 18.sp,
+              icon: const Icon(
+                Icons.email,
+                color: Colors.white,
+              ),
+              onPressed: () {
+                context.goNamed('/message');
+              },
             ),
             SizedBox(
               height: 900.h * 0.06,
             ),
-            const Icon(
-              Icons.settings,
-              color: Colors.white,
+            IconButton(
+              iconSize: 18.sp,
+              icon: const Icon(
+                Icons.settings,
+                color: Colors.white,
+              ),
+              onPressed: () {
+                context.goNamed('/settings');
+              },
             ),
             SizedBox(
-              height: 900.h * 0.25,
+              height: 900.h * 0.15,
             ),
             const Icon(
               Icons.logout,
