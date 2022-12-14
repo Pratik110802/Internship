@@ -2,13 +2,38 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:internship/provider/tabprovider.dart';
 import 'package:internship/responsive.dart';
+
 import 'package:internship/screens/mobile/mobile_home.dart';
+import 'package:provider/provider.dart';
+import 'screens/Extras screens/courses.dart';
+import 'screens/Extras screens/dashboard_account.dart';
+import 'screens/Extras screens/message.dart';
+import 'screens/Extras screens/settings.dart';
 import 'screens/desktop/desktop_widgets.dart';
 import 'screens/Common Widgets/common_widgets.dart';
 
 class Home extends StatelessWidget {
-  const Home({super.key});
+  Home({super.key});
+
+  int current = 0;
+
+  final tabsmobile = [
+    const Homepagemobile(),
+    const Courses(),
+    const MyAccount(),
+    const Message(),
+    const Settings()
+  ];
+
+  final tabsdesktop = [
+    const Homepagedesktop(),
+    const Courses(),
+    const MyAccount(),
+    const Message(),
+    const Settings()
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -25,10 +50,14 @@ class Home extends StatelessWidget {
                     right: 1440.w * 0.055),
                 child: Row(children: [
                   const DesktopTabbar(),
-                  SizedBox(width: 1440.w * 0.049),
-                  const Column1(),
-                  SizedBox(width: 1440.w * 0.04375),
-                  const Column2(),
+                  SizedBox(
+                      width: 1440.w * 0.8335,
+                      height: 900.h,
+                      child: Consumer<Tabprovider>(
+                        builder: (_, data, __) {
+                          return tabsdesktop[data.current];
+                        },
+                      ))
                 ]),
               )
             : Padding(
@@ -37,18 +66,18 @@ class Home extends StatelessWidget {
                   height: 800.h,
                   width: 360.w,
                   child: ListView(
-                    physics: BouncingScrollPhysics(
+                    physics: const BouncingScrollPhysics(
                         parent: AlwaysScrollableScrollPhysics()),
                     children: [
                       SizedBox(
                         height: 21.sp,
                       ),
                       const Mobiletopbar(),
-                      SizedBox(
-                        height: 47.sp,
-                      ),
-                      const Column1(),
-                      const Column2()
+                      Consumer<Tabprovider>(
+                        builder: (_, data, __) {
+                          return tabsmobile[data.current];
+                        },
+                      )
                     ],
                   ),
                 ),

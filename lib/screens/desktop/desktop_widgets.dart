@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
-import 'package:internship/screens/Extras%20screens/courses.dart';
+
+import 'package:provider/provider.dart';
+
+import '../../provider/tabprovider.dart';
+import '../Common Widgets/common_widgets.dart';
 
 //Deskop Navigation Bar
 class DesktopTabbar extends StatelessWidget {
@@ -34,68 +37,68 @@ class DesktopTabbar extends StatelessWidget {
             SizedBox(
               height: 900.h * 0.071,
             ),
-            IconButton(
-              iconSize: 18.sp,
-              icon: const Icon(
-                Icons.home,
-                color: Colors.white,
-              ),
-              onPressed: () {
-                context.goNamed('/');
-              },
-            ),
+            Consumer<Tabprovider>(
+                builder: ((context, data, child) => IconButton(
+                      icon: const Icon(
+                        Icons.home,
+                        color: Colors.white,
+                      ),
+                      onPressed: () {
+                        data.changetab(0);
+                      },
+                    ))),
             SizedBox(
               height: 900.h * 0.07,
             ),
-            IconButton(
-              iconSize: 18.sp,
-              icon: const Icon(
-                Icons.school_outlined,
-                color: Colors.white,
-              ),
-              onPressed: () {
-                context.go('/courses');
-              },
-            ),
+            Consumer<Tabprovider>(
+                builder: ((context, data, child) => IconButton(
+                      icon: const Icon(
+                        Icons.school_outlined,
+                        color: Colors.white,
+                      ),
+                      onPressed: () {
+                        data.changetab(1);
+                      },
+                    ))),
             SizedBox(
               height: 900.h * 0.06,
             ),
-            IconButton(
-              iconSize: 18.sp,
-              icon: const Icon(
-                Icons.person_outline,
-                color: Colors.white,
-              ),
-              onPressed: () {
-                context.goNamed('/myaccount');
-              },
-            ),
+            Consumer<Tabprovider>(
+                builder: ((context, data, child) => IconButton(
+                      icon: const Icon(
+                        Icons.person_outlined,
+                        color: Colors.white,
+                      ),
+                      onPressed: () {
+                        data.changetab(2);
+                      },
+                    ))),
             SizedBox(
               height: 900.h * 0.06,
             ),
-            IconButton(
-              iconSize: 18.sp,
-              icon: const Icon(
-                Icons.email,
-                color: Colors.white,
-              ),
-              onPressed: () {
-                context.goNamed('/message');
-              },
-            ),
+            Consumer<Tabprovider>(
+                builder: ((context, data, child) => IconButton(
+                      icon: const Icon(
+                        Icons.email,
+                        color: Colors.white,
+                      ),
+                      onPressed: () {
+                        data.changetab(3);
+                      },
+                    ))),
             SizedBox(
               height: 900.h * 0.06,
             ),
-            IconButton(
-              iconSize: 18.sp,
-              icon: const Icon(
-                Icons.settings,
-                color: Colors.white,
-              ),
-              onPressed: () {
-                context.goNamed('/settings');
-              },
-            ),
+            Consumer<Tabprovider>(
+                builder: ((context, data, child) => IconButton(
+                      icon: const Icon(
+                        Icons.settings,
+                        color: Colors.white,
+                      ),
+                      onPressed: () {
+                        data.changetab(4);
+                      },
+                    ))),
             SizedBox(
               height: 900.h * 0.15,
             ),
@@ -109,6 +112,22 @@ class DesktopTabbar extends StatelessWidget {
           ]),
         ),
       ),
+    );
+  }
+}
+
+class Homepagedesktop extends StatelessWidget {
+  const Homepagedesktop({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        SizedBox(width: 1440.w * 0.049),
+        const Column1(),
+        SizedBox(width: 1440.w * 0.04),
+        const Column2(),
+      ],
     );
   }
 }

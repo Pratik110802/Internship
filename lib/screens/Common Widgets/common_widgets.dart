@@ -17,7 +17,7 @@ class Column1 extends StatelessWidget {
         builder: (context, child) => SizedBox(
               width: (Responsive.isDesktop(context) == true)
                   ? 1440.w * 0.43
-                  : 360.w * 0.9,
+                  : 360.w * 0.8,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -578,7 +578,7 @@ class Column2 extends StatelessWidget {
             : const Size(360, 800),
         builder: (context, child) => SizedBox(
               width: (Responsive.isDesktop(context) == true)
-                  ? 1440.w * 0.305
+                  ? 1440.w * 0.30
                   : 360.w * 0.867,
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
